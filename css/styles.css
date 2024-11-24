@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+    flex: 1 1 45%;
+    margin: 10px;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+
+
+p {
+    margin: 5px 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+.form-container {
+    display: none;
+    flex-direction: column;
+}
+
+.form-container.active {
+    display: flex;
+}
+
+input, select {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Buttons Container */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  gap: 20px; /* Space between buttons */
+  margin-bottom: 20px; /* Space below buttons */
+}
+
+/* Individual Buttons */
+button {
+  flex: 1; /* Ensures equal width for all buttons */
+  max-width: 100px; /* Optional: Limit the maximum width */
+  padding: 12px 0; /* Adds uniform padding */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: white; /* White text */
+  border: none; /* Removes border */
+  border-radius: 15px; /* Makes buttons rounded */
+  font-size: 16px; /* Text size */
+  font-weight: bold; /* Bold text for emphasis */
+  text-transform: uppercase; /* Makes text uppercase */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  transition: all 0.3s ease; /* Smooth hover transition */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover Effect */
+button:hover {
+  transform: scale(1.05); /* Slightly enlarges the button */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Increases shadow intensity */
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient */
+}
+
+/* Active Effect */
+button:active {
+  transform: scale(0.95); /* Slightly shrinks on click */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /* Reduces shadow */
+}
+button.login-submit-btn{
+    width:100px;
+  margin: auto;
+}
