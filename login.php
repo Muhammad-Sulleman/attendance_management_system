@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/db_connection.php';
+include 'views/partials/header.php';
 
 // Handle Registration
 if (isset($_POST['register'])) {
@@ -115,6 +116,4 @@ if (isset($_POST['login'])) {
             </form>
         </div>
     </div>
-</body>
-
-</html>
+   <?php include 'views/partials/footer.php';?>

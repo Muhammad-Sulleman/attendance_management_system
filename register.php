@@ -1,5 +1,6 @@
 <?php
 include 'includes/db.php';
+include 'views/partials/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullname = $_POST['fullname'];

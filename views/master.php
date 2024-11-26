@@ -1,38 +1,31 @@
 <?php
-session_start();
-if (!isset($_SESSION['user'])) {
-    header("Location: ../login.php");
-    exit;
+// Check if session is already started before calling session_start
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Start session only if not already started
 }
-$user = $_SESSION['user'];
+
+include __DIR__ . '/partials/header.php'; // Include your header (relative path may vary)
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Attendance Management</title>
-    <!-- Corrected path to styles.css -->
-    <link rel="stylesheet" href="/attendance_management_system/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Adjust the path if needed -->
 </head>
 
 <body>
-    <header>
-        <h1>Welcome, <?php echo htmlspecialchars($user['fullname']); ?>!</h1>
-        <a href="../logout.php">Logout</a>
-    </header>
-    <main>
+    <div class="container">
         <?php
-        // Safely include the content file
-        if (isset($content) && file_exists($content)) {
-            include $content;
+        if (isset($content)) {
+            include __DIR__ . '/' . $content;
         } else {
-            echo "<p style='color: red;'>Content file not found or not set!</p>";
+            echo "<p style='color:red;'>Content file not found or not set!</p>";
         }
         ?>
-    </main>
-    <footer>
-        <p>&copy; 2024 Attendance Management System</p>
-    </footer>
+    </div>
 </body>
 
 </html>
