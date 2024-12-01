@@ -1,26 +1,19 @@
+
 body {
     font-family: Arial, sans-serif;
+   
     background: #f4f4f4;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+
+}
+*{
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 60%;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+
 
 .form-container {
     flex: 1 1 45%;
@@ -51,20 +44,16 @@ input, select {
 p {
     margin: 5px 0;
 }
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 
 .container {
-    width: 400px;
+    width: 400px; 
     background: #fff;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin:auto;
+    align-items: center;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -93,46 +82,65 @@ body {
 }
 
 input, select {
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%; /* Ensure both elements take the full width of their container */
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Includes padding and border in width calculations */
 }
 
 
 /* Buttons Container */
 .button-container {
   display: flex;
+  color:white;
+
   justify-content: center; /* Center buttons horizontally */
-  gap: 20px; /* Space between buttons */
+  gap: 20px; 
+  background-color: blue;/* Space between buttons */
   margin-bottom: 20px; /* Space below buttons */
 }
 
 /* Individual Buttons */
 button {
+  margin: auto;
   flex: 1; /* Ensures equal width for all buttons */
-  max-width: 100px; /* Optional: Limit the maximum width */
+  width: 100px; /* Optional: Limit the maximum width */
   padding: 12px 0; /* Adds uniform padding */
-  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
-  color: white; /* White text */
+ /* Gradient background */
+  color: white;
+   background-color:  #007BFF;; /* White text */
   border: none; /* Removes border */
-  border-radius: 15px; /* Makes buttons rounded */
-  font-size: 16px; /* Text size */
-  font-weight: bold; /* Bold text for emphasis */
+  border-radius: 5px; /* Makes buttons rounded */
+  font-size: 11px; /* Text size */
+  font-weight: normal; /* Bold text for emphasis */
   text-transform: uppercase; /* Makes text uppercase */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
   transition: all 0.3s ease; /* Smooth hover transition */
   cursor: pointer; /* Pointer cursor on hover */
 }
 
+
 /* Hover Effect */
 button:hover {
-  transform: scale(1.05); /* Slightly enlarges the button */
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Increases shadow intensity */
-  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient */
+/* Increases shadow intensity */
+  background: rgb(20, 7, 117)/* Reverse gradient */
 }
 
+.create-session{
+color: WHITE;
+  text-decoration: none;
+}
+#create-session{
+  padding: 5px;
+margin-top: 50px; 
+  width:auto;
+    margin: 20px; 
+  
+  
+}
 /* Active Effect */
 button:active {
   transform: scale(0.95); /* Slightly shrinks on click */
@@ -142,6 +150,7 @@ button.login-submit-btn{
     width:100px;
   margin: auto;
 }
+
 header{
   display: flex;
   justify-content: center;
@@ -153,6 +162,146 @@ header{
   position: absolute;
   top:0;
 }
+
+.mark-attendance {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mark-attendance h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.mark-attendance ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.mark-attendance li {
+    display: flex;
+    margin-left:5px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    width: calc(100% - 15px); /* Two columns with a gap */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mark-attendance label {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+}
+
+
+.mark-attendance input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+ margin-left:auto;
+    cursor: pointer;
+}
+input[type="time"]::-webkit-datetime-edit {
+    color: inherit; /* Hide default placeholder text */
+}
+
+input[type="time"]::-webkit-datetime-edit-text {
+    color: inherit; /* Retain the color for typed text */
+}
+
+input[type="time"]:focus::-webkit-datetime-edit,
+input[type="time"]:hover::-webkit-datetime-edit {
+    color: inherit;
+    /* Show text on focus/hover */
+}
+
+input[type="time"] {
+    font-size: 16px; /* Adjust font size */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+/* Style for the available sessions container */
+.available-sessions ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 5px; /* Remove padding */
+    margin: 20px; /* Remove margin */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for multiple sessions */
+    gap: 20px; /* Space between session containers */
+}
+
+/* Individual session container */
+.available-sessions li {
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text for readability */
+    padding: 15px; /* Add padding for spacing inside the container */
+    border-radius: 10px; /* Rounded corners */
+    width: 250px; /* Fixed width for uniformity */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    font-family: Arial, sans-serif; /* Use a clean font */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Space out elements */
+}
+
+/* Style for links inside session containers */
+.available-sessions li a {
+    color: #FFD700; /* Gold color for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the text bold */
+    margin-top: 10px; /* Space above the link */
+    align-self: center; /* Align link to the right */
+}
+
+/* Hover effect for session containers */
+.available-sessions li:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Hover effect for links */
+.available-sessions li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+.mark-attendance button {
+
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.mark-attendance button:hover {
+    background-color: #0056b3;
+}
+
 footer{
   color:white;
   display: flex;

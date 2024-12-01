@@ -1,62 +1,57 @@
 <?php
 session_start();
 include '../includes/db_connection.php';
+include './partials/header.php';
 
+// Check if the user is logged in and is a teacher
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'teacher') {
     header("Location: ../login.php");
     exit;
 }
 
+// Get the class ID from the query string
 $class_id = $_GET['classid'];
-$teacher_id = $_SESSION['user']['id'];
-$content = "mark_attendance_content.php";
-?>
 
-<!-- mark_attendance_content.php -->
-<div>
-    <h2>Mark Attendance</h2>
-    <?php
-    $students_query = "
-        SELECT `user`.`id`, `user`.`fullname` 
-        FROM `user`
-        JOIN `class` ON `user`.`class` = `class`.`id`
-        WHERE `class`.`id` = ? AND `class`.`teacherid` = ?
-    ";
-    $stmt = $conn->prepare($students_query);
-    $stmt->bind_param('ii', $class_id, $teacher_id);
-    $stmt->execute();
-    $students = $stmt->get_result();
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        foreach ($_POST['attendance'] as $student_id => $is_present) {
-            $query = "
-                INSERT INTO `attendance` (`classid`, `studentid`, `isPresent`) 
-                VALUES (?, ?, ?)
-                ON DUPLICATE KEY UPDATE `isPresent` = VALUES(`isPresent`)
-            ";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param('iii', $class_id, $student_id, $is_present);
-            $stmt->execute();
-        }
-        echo "<p style='color:green;'>Attendance marked successfully!</p>";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Mark attendance for the students in the class
+    foreach ($_POST['attendance'] as $student_id => $is_present) {
+        // Insert or update attendance
+        $query = "INSERT INTO `attendance` (`classid`, `studentid`, `isPresent`) 
+                  VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE isPresent = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('iiii', $class_id, $student_id, $is_present, $is_present);
+        $stmt->execute();
     }
-    ?>
 
-    <form method="POST">
-        <table>
-            <tr>
-                <th>Student Name</th>
-                <th>Present</th>
-                <th>Absent</th>
-            </tr>
-            <?php while ($student = $students->fetch_assoc()): ?>
-                <tr>
-                    <td><?= htmlspecialchars($student['fullname']) ?></td>
-                    <td><input type="radio" name="attendance[<?= $student['id'] ?>]" value="1" required></td>
-                    <td><input type="radio" name="attendance[<?= $student['id'] ?>]" value="0"></td>
-                </tr>
-            <?php endwhile; ?>
-        </table>
-        <button type="submit">Submit</button>
+    // Redirect back to teacher's session page after marking attendance
+    header("Location: teacher.php");
+    exit;
+}
+
+// Query to fetch students for this class
+$query = "SELECT user.id, user.fullname FROM user
+          JOIN class ON class.id = ?
+          WHERE user.role = 'student'";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $class_id);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
+<div class="mark-attendance">
+    <form method="POST" action="mark_attendance.php?classid=<?php echo $class_id; ?>">
+        <h3>Mark Attendance</h3>
+        <ul>
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <li>
+                    <label>
+                        <?php echo $row['fullname']; ?>
+
+                    </label>
+                    <input type="checkbox" name="attendance[<?php echo $row['id']; ?>]" value="1">
+                </li>
+            <?php } ?>
+        </ul>
+        <button type="submit">Submit </button>
     </form>
+    <?php include './partials/footer.php'; ?>
 </div>

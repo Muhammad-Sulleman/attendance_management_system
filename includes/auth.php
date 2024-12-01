@@ -19,7 +19,8 @@ function loginUser($email, $password)
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        if (password_verify($password, $user['password'])) {
+        // Compare plain text password directly
+        if ($password === $user['password']) {
             $_SESSION['user'] = $user;
             return true;
         }

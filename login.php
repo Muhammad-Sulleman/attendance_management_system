@@ -7,7 +7,7 @@ include 'views/partials/header.php';
 if (isset($_POST['register'])) {
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
+    $password = $_POST['password'];// Hash the password
     $role = $_POST['role'];
     $class = $_POST['class'] ?? ''; // Class is required only for students.
 
@@ -36,9 +36,10 @@ if (isset($_POST['register'])) {
 // Handle Login
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; 
 
     $query = "SELECT * FROM `user` WHERE `email` = ?";
+
     $stmt = $conn->prepare($query);
     $stmt->bind_param('s', $email);
     $stmt->execute();
@@ -47,7 +48,7 @@ if (isset($_POST['login'])) {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        if (password_verify($password, $user['password'])) { // Verify password
+         if ($password === $user['password']) { // Verify password
             $_SESSION['user'] = $user;
 
             // Redirect based on role
@@ -63,6 +64,7 @@ if (isset($_POST['login'])) {
     } else {
         $login_error = "Email not found!";
     }
+    
 }
 ?>
 <!DOCTYPE html>
