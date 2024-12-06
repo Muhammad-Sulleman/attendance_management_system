@@ -4,7 +4,8 @@ session_start();
 
 // Include the necessary files
 include '../includes/db_connection.php';
-include 'partials/header.php';
+        include 'partials/header.php';
+
 
 // Check if the user is logged in and is a student
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'student') {
@@ -74,6 +75,8 @@ $content = "student.php";  // This could be the content that is loaded in the ma
             // Display message if no attendance data is found
             echo "<tr><td colspan='4'>No attendance records found for this student.</td></tr>";
         }
+      
         ?>
     </table>
 </div>
+<?php ?>

@@ -53,5 +53,5 @@ $result = $stmt->get_result();
         </ul>
         <button type="submit">Submit </button>
     </form>
-    <?php include './partials/footer.php'; ?>
-</div>
+
+</div> <?php include './partials/footer.php'; ?>

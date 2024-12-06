@@ -42,6 +42,7 @@ if (isset($_POST['login'])) {
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param('s', $email);
+
     $stmt->execute();
     $result = $stmt->get_result();
 

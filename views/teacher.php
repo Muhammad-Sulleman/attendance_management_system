@@ -34,7 +34,7 @@ $result = $stmt->get_result();
             <?php
             while ($row = $result->fetch_assoc()) {
                 echo "<li>
-                    Class ID: {$row['id']}  <br>  Start: {$row['starttime']} <br>   End: {$row['endtime']}
+                    Class ID: {$row['id']}  <br>  Start: {$row['starttime']}   End: {$row['endtime']}
                     <a href='mark_attendance.php?classid={$row['id']}'>Mark Attendance</a>
                   </li>";
             }
